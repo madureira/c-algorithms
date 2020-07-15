@@ -1,6 +1,6 @@
 /*
 Binary search
-Time complexity: T(n) = T(n/2) + c
+Recurrence relation: T(n) = T(n/2) + 1
 */
 #include <stdio.h>
 
@@ -11,7 +11,7 @@ int binarySearch(int arr[], int left, int right, int x)
         // Get the element at the middle of the array
         int middle = left + (right - left) / 2;
 
-        // Check if x is present at mid
+        // Check if x is present at middle
         if (arr[middle] == x)
         {
             return middle;
@@ -44,7 +44,7 @@ int main()
 
     if (result == -1)
     {
-        printf_s("Element is not present in array\n");
+        printf_s("Element is not present in array!\n");
     }
     else
     {
