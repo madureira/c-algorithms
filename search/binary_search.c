@@ -1,6 +1,10 @@
 /*
 Binary search
-Recurrence relation: T(n) = T(n/2) + 1
+
+Worst complexity: O(log n)
+Average complexity: O(log n)
+Best complexity: O(1)
+Space complexity: O(1)
 */
 #include <stdio.h>
 
@@ -35,12 +39,13 @@ int binarySearch(int arr[], int left, int right, int x)
 
 int main()
 {
-    printf_s("Binary search\n");
+    printf_s("Binary search\n\n");
 
-    int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
-    int n = (int)(sizeof(arr) / sizeof(arr[0]));
-    int x = 4;
-    int result = binarySearch(arr, 0, n - 1, x);
+    int arr[] = { 1, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31 };
+    int size = (int)(sizeof(arr) / sizeof(arr[0]));
+    int x = 7;
+
+    int result = binarySearch(arr, 0, size - 1, x);
 
     if (result == -1)
     {
@@ -48,7 +53,7 @@ int main()
     }
     else
     {
-        printf_s("Element is present at index: %i\n", result);
+        printf_s("Element %d is present at index: %d\n", x, result);
     }
 
     return 0;

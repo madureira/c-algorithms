@@ -6,4 +6,10 @@
 
 | Search                                   | Time Complexity |
 | ---------------------------------------- | --------------- |
-| [binary search](/search/binary_search.c) | O(log N)        |
+| [binary search](/search/binary_search.c) | O(log n)        |
+
+---
+
+| Sorting                                  | Time Complexity |
+| ---------------------------------------- | --------------- |
+| [bubble sort](/sorting/bubble_sort.c)    | O(n^2)          |
