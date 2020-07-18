@@ -7,6 +7,7 @@
 | Search                                   | Time Complexity |
 | ---------------------------------------- | --------------- |
 | [binary search](/search/binary_search.c) | O(log n)        |
+| [linear search](/search/linear_search.c) | O(n)            |
 
 ---
 
