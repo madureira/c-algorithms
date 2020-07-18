@@ -4,11 +4,12 @@
 
 :book: Collection of various algorithms implemented in C for educational purposes.
 
-| Search                                   | Time Complexity |
-| ---------------------------------------- | --------------- |
-| [binary search](/search/binary_search.c) | O(log n)        |
-| [linear search](/search/linear_search.c) | O(n)            |
-| [jump search](/search/jump_search.c)     | O(√n)           |
+| Search                                                 | Time Complexity |
+| ------------------------------------------------------ | --------------- |
+| [binary search](/search/binary_search.c)               | O(log n)        |
+| [linear search](/search/linear_search.c)               | O(n)            |
+| [jump search](/search/jump_search.c)                   | O(√n)           |
+| [interpolation search](/search/interpolation_search.c) | O(log log n)    |
 
 ---
 
