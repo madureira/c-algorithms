@@ -6,22 +6,22 @@
 
 :book: Collection of various algorithms implemented in C for educational purposes.
 
-| Search                                                 | Time Complexity |
-| ------------------------------------------------------ | --------------- |
-| [binary search](/search/binary_search.c)               | O(log n)        |
-| [linear search](/search/linear_search.c)               | O(n)            |
-| [jump search](/search/jump_search.c)                   | O(√n)           |
-| [interpolation search](/search/interpolation_search.c) | O(log log n)    |
+| Search                                                 | Worst complexity | Average complexity | Best complexity | Space complexity |
+| ------------------------------------------------------ | ---------------- | ------------------ | ----------------| ---------------- |
+| [binary search](/search/binary_search.c)               | O(log n)         | O(log n)           | O(1)            | O(1)             |
+| [linear search](/search/linear_search.c)               | O(n)             | O(n)               | O(1)            | O(1)             |
+| [jump search](/search/jump_search.c)                   | O(√n)            | O(√n)              | O(1)            | O(1)             |
+| [interpolation search](/search/interpolation_search.c) | O(n)             | O(log log n)       | O(1)            | O(1)             |
 
 ---
 
-| Sorting                                  | Time Complexity |
-| ---------------------------------------- | --------------- |
-| [bubble sort](/sorting/bubble_sort.c)    | O(n^2)          |
-| [quick sort](/sorting/quick_sort.c)      | O(n^2)          |
+| Sorting                                  | Worst complexity | Average complexity | Best complexity | Space complexity |
+| ---------------------------------------- | ---------------- | ------------------ | ----------------| ---------------- |
+| [bubble sort](/sorting/bubble_sort.c)    | O(n^2)           | O(n^2)             | O(n)            | O(1)             |
+| [quick sort](/sorting/quick_sort.c)      | O(n^2)           | O(n log n)         | O(n log n)      | O(log n)         |
 
 ---
 
 | Data Structure                           |
 | ---------------------------------------- |
-| [ArrayList](/data_structures/ArrayList/)  |
+| [ArrayList](/data_structures/ArrayList/) |
