@@ -21,4 +21,4 @@
 
 | Data Structure                           |
 | ---------------------------------------- |
-| [ArrayList](/data_structure/ArrayList/)  |
+| [ArrayList](/data_structures/ArrayList/README.md)  |
