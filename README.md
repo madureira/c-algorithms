@@ -13,3 +13,9 @@
 | Sorting                                  | Time Complexity |
 | ---------------------------------------- | --------------- |
 | [bubble sort](/sorting/bubble_sort.c)    | O(n^2)          |
+
+---
+
+| Data Structure                           |
+| ---------------------------------------- |
+| [ArrayList](/data_structure/ArrayList/)  |
