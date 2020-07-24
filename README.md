@@ -18,6 +18,7 @@
 | Sorting                                  | Time Complexity |
 | ---------------------------------------- | --------------- |
 | [bubble sort](/sorting/bubble_sort.c)    | O(n^2)          |
+| [quick sort](/sorting/quick_sort.c)      | O(n^2)          |
 
 ---
 

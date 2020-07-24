@@ -307,6 +307,5 @@ int main()
     test_arraylist_erase();
     test_arraylist_capacity();
 
-
     return 0;
 }
