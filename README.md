@@ -1,13 +1,13 @@
 [![c-algorithms](/.github/c-logo.png)](https://github.com/madureira/c-algorithms)
 
 <p align="center">
-  <a aria-label="language" href="https://en.wikipedia.org/wiki/C11_(C_standard_revision)">
+  <a aria-label="language" href="https://en.wikipedia.org/wiki/C11_(C_standard_revision)" target="_blank">
     <img src="https://img.shields.io/badge/Language-C-blue.svg?style=for-the-badge&labelColor=000000&logoWidth=20">
   </a>
-  <a aria-label="MIT license" href="https://lbesson.mit-license.org/">
+  <a aria-label="MIT license" href="https://lbesson.mit-license.org/" target="_blank">
     <img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge&labelColor=000000&logoWidth=20">
   </a>
-  <a aria-label="Maintenance" href="https://github.com/madureira/c-algorithms/graphs/commit-activity">
+  <a aria-label="Maintenance" href="https://github.com/madureira/c-algorithms/graphs/commit-activity" target="_blank">
     <img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge&labelColor=000000&logoWidth=20">
   </a>
 </p>
