@@ -125,24 +125,22 @@ void arraylist_remove(ArrayList* arrayList, unsigned int index)
     arraylist_remove_range(arrayList, index, index);
 }
 
-void arraylist_sort(ArrayList* arrayList)
+void arraylist_sort(ArrayList* arrayList, ArrayListCompareFunction compareFunction)
 {
-    __arraylist_quicksort(arrayList->__elements, 0, arrayList->__length);
+    __arraylist_quicksort(arrayList->__elements, 0, arrayList->__length - 1, compareFunction);
 }
 
 void arraylist_reverse(ArrayList* arrayList)
 {
     int start = 0;
-    int end = arrayList->__length;
-    ArrayList temp;
+    int end = arrayList->__length - 1;
+    ArrayListValue temp;
 
     while (start < end)
     {
-        temp = arrayList[start];
-        arrayList[start] = arrayList[end];
-        arrayList[end] = temp;
-        start++;
-        end--;
+        temp = arrayList->__elements[start];
+        arrayList->__elements[start++] = arrayList->__elements[end];
+        arrayList->__elements[end--] = temp;
     }
 }
 
@@ -181,7 +179,7 @@ int __arraylist_increase_capacity(ArrayList* arrayList)
     }
 }
 
-void __arraylist_quicksort(ArrayListValue* elements, int left, int right)
+void __arraylist_quicksort(ArrayListValue* elements, int left, int right, ArrayListCompareFunction compareFunction)
 {
     if (left >= right)
     {
@@ -195,7 +193,7 @@ void __arraylist_quicksort(ArrayListValue* elements, int left, int right)
     ArrayListValue temp;
     for (int i = left; i <= right; i++)
     {
-        if (elements[i] <= pivot)
+        if (compareFunction(elements[i], pivot) <= 0)
         {
             temp = elements[splitIndex];
             elements[splitIndex] = elements[i];
@@ -204,6 +202,6 @@ void __arraylist_quicksort(ArrayListValue* elements, int left, int right)
         }
     }
 
-    __arraylist_quicksort(elements, left, splitIndex - 2);
-    __arraylist_quicksort(elements, splitIndex, right);
+    __arraylist_quicksort(elements, left, splitIndex - 2, compareFunction);
+    __arraylist_quicksort(elements, splitIndex, right, compareFunction);
 }

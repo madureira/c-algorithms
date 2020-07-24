@@ -1,7 +1,3 @@
-/*
-An ArrayList is a random access, variable-size list data structure that
-allows elements to be added or removed and resizes itself automatically.
-*/
 #ifndef ARRAY_LIST_H
 #define ARRAY_LIST_H
 
@@ -21,6 +17,8 @@ extern "C" {
         unsigned int __length;
         unsigned int __capacity;
     } ArrayList;
+
+    typedef int (*ArrayListCompareFunction)(ArrayListValue a, ArrayListValue b);
 
     /*
         Creates a new empty ArrayList.
@@ -75,7 +73,7 @@ extern "C" {
     /*
         Sort the elements from an ArrayList.
     */
-    void arraylist_sort(ArrayList* arrayList);
+    void arraylist_sort(ArrayList* arrayList, ArrayListCompareFunction compareFunction);
 
     /*
         Reverse all elements from an ArrayList.

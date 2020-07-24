@@ -1,9 +1,27 @@
+/*
+An ArrayList is a random access, variable-size list data structure that
+allows elements to be added or removed and resizes itself automatically.
+*/
 #include <stdio.h>
+#include <string.h>
 #include <assert.h>
 #include "ArrayList.h"
 
 #define ASSERT_INT_EQUALS(a, b) assert((a) == (b))
+#define ASSERT_STRING_EQUALS(a, b) strcmp((a), (b))
 #define TEST_DONE printf_s("Test: \"%s\" - success\n", __func__)
+
+static int int_compare_function(int a, int b)
+{
+    if (a > b) return 1;
+    if (a < b) return -1;
+    return 0;
+}
+
+static int c_string_compare_function(char* a, char* b)
+{
+    return strcmp(a, b);
+}
 
 void test_new_arraylist()
 {
@@ -88,6 +106,8 @@ void test_arraylist_at()
 
     ASSERT_INT_EQUALS(arraylist_at(arrayList, 1), 20);
 
+    free_arraylist(arrayList);
+
     TEST_DONE;
 }
 
@@ -104,6 +124,8 @@ void test_arraylist_indexof()
 
     int notFound = arraylist_indexof(arrayList, 90);
     ASSERT_INT_EQUALS(notFound, -1);
+
+    free_arraylist(arrayList);
 
     TEST_DONE;
 }
@@ -123,6 +145,8 @@ void test_arraylist_remove_range()
     ASSERT_INT_EQUALS(arraylist_at(arrayList, 0), 10);
     ASSERT_INT_EQUALS(arraylist_at(arrayList, 1), 40);
 
+    free_arraylist(arrayList);
+
     TEST_DONE;
 }
 
@@ -140,6 +164,8 @@ void test_arraylist_remove()
     ASSERT_INT_EQUALS(arraylist_at(arrayList, 0), 10);
     ASSERT_INT_EQUALS(arraylist_at(arrayList, 1), 30);
 
+    free_arraylist(arrayList);
+
     TEST_DONE;
 }
 
@@ -153,13 +179,34 @@ void test_arraylist_sort()
     arraylist_append(arrayList, 10);
     arraylist_append(arrayList, 20);
 
-    arraylist_sort(arrayList);
+    arraylist_sort(arrayList, int_compare_function);
 
     ASSERT_INT_EQUALS(arraylist_at(arrayList, 0), 10);
     ASSERT_INT_EQUALS(arraylist_at(arrayList, 1), 10);
     ASSERT_INT_EQUALS(arraylist_at(arrayList, 2), 20);
     ASSERT_INT_EQUALS(arraylist_at(arrayList, 3), 30);
     ASSERT_INT_EQUALS(arraylist_at(arrayList, 4), 40);
+
+    free_arraylist(arrayList);
+
+    TEST_DONE;
+}
+
+void test_arraylist_sort_strings()
+{
+    ArrayList* arrayList = new_arraylist();
+
+    arraylist_append(arrayList, "Z");
+    arraylist_append(arrayList, "A");
+    arraylist_append(arrayList, "B");
+
+    arraylist_sort(arrayList, c_string_compare_function);
+
+    ASSERT_STRING_EQUALS(arraylist_at(arrayList, 0), "A");
+    ASSERT_STRING_EQUALS(arraylist_at(arrayList, 1), "B");
+    ASSERT_STRING_EQUALS(arraylist_at(arrayList, 2), "C");
+
+    free_arraylist(arrayList);
 
     TEST_DONE;
 }
@@ -174,13 +221,15 @@ void test_arraylist_reverse()
     arraylist_append(arrayList, 20);
     arraylist_append(arrayList, 10);
 
-    arraylist_sort(arrayList);
+    arraylist_sort(arrayList, int_compare_function);
 
     ASSERT_INT_EQUALS(arraylist_at(arrayList, 0), 10);
     ASSERT_INT_EQUALS(arraylist_at(arrayList, 1), 20);
     ASSERT_INT_EQUALS(arraylist_at(arrayList, 2), 30);
     ASSERT_INT_EQUALS(arraylist_at(arrayList, 3), 40);
     ASSERT_INT_EQUALS(arraylist_at(arrayList, 4), 50);
+
+    free_arraylist(arrayList);
 
     TEST_DONE;
 }
@@ -200,6 +249,8 @@ void test_arraylist_erase()
     ASSERT_INT_EQUALS(arraylist_at(arrayList, 1), 0);
     ASSERT_INT_EQUALS(arraylist_at(arrayList, 2), 0);
 
+    free_arraylist(arrayList);
+
     TEST_DONE;
 }
 
@@ -215,6 +266,8 @@ void test_arraylist_capacity()
     }
 
     ASSERT_INT_EQUALS(arraylist_capacity(arrayList), ARRAY_LIST_INITIAL_CAPACITY * 2);
+
+    free_arraylist(arrayList);
 
     TEST_DONE;
 }
@@ -233,6 +286,7 @@ int main()
     test_arraylist_remove_range();
     test_arraylist_remove();
     test_arraylist_sort();
+    test_arraylist_sort_strings();
     test_arraylist_reverse();
     test_arraylist_erase();
     test_arraylist_capacity();
