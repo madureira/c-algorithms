@@ -12,7 +12,8 @@
   </a>
 </p>
 
-:book: Collection of various algorithms implemented in C for educational purposes.
+<p align="center">A collection of various algorithms implemented in C for educational purposes.</p>
+
 
 | Search                                                 | Worst complexity | Average complexity | Best complexity | Space complexity |
 | ------------------------------------------------------ | ---------------- | ------------------ | ----------------| ---------------- |
