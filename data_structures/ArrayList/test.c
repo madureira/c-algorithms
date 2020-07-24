@@ -1,6 +1,5 @@
 /*
-An ArrayList is a random access, variable-size list data structure that
-allows elements to be added or removed and resizes itself automatically.
+ArrayList: Dynamic sized arrays
 */
 #include <stdio.h>
 #include <string.h>
@@ -196,9 +195,9 @@ void test_arraylist_sort_strings()
 {
     ArrayList* arrayList = new_arraylist();
 
-    arraylist_append(arrayList, "Z");
-    arraylist_append(arrayList, "A");
+    arraylist_append(arrayList, "C");
     arraylist_append(arrayList, "B");
+    arraylist_append(arrayList, "A");
 
     arraylist_sort(arrayList, c_string_compare_function);
 
@@ -228,6 +227,25 @@ void test_arraylist_reverse()
     ASSERT_INT_EQUALS(arraylist_at(arrayList, 2), 30);
     ASSERT_INT_EQUALS(arraylist_at(arrayList, 3), 40);
     ASSERT_INT_EQUALS(arraylist_at(arrayList, 4), 50);
+
+    free_arraylist(arrayList);
+
+    TEST_DONE;
+}
+
+void test_arraylist_reverse_c_strings()
+{
+    ArrayList* arrayList = new_arraylist();
+
+    arraylist_append(arrayList, "A");
+    arraylist_append(arrayList, "B");
+    arraylist_append(arrayList, "C");
+
+    arraylist_reverse(arrayList);
+
+    ASSERT_INT_EQUALS(arraylist_at(arrayList, 0), "C");
+    ASSERT_INT_EQUALS(arraylist_at(arrayList, 1), "B");
+    ASSERT_INT_EQUALS(arraylist_at(arrayList, 2), "A");
 
     free_arraylist(arrayList);
 
@@ -288,8 +306,10 @@ int main()
     test_arraylist_sort();
     test_arraylist_sort_strings();
     test_arraylist_reverse();
+    test_arraylist_reverse_c_strings();
     test_arraylist_erase();
     test_arraylist_capacity();
+
 
     return 0;
 }
