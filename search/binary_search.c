@@ -45,15 +45,15 @@ int main()
     int size = (int)(sizeof(arr) / sizeof(arr[0]));
     int x = 7;
 
-    int result = binarySearch(arr, 0, size - 1, x);
+    int index = binarySearch(arr, 0, size - 1, x);
 
-    if (result == -1)
+    if (index == -1)
     {
-        printf_s("Element is not present in array!\n");
+        printf_s("Element %d is not present in the array!\n", x);
     }
     else
     {
-        printf_s("Element %d is present at index: %d\n", x, result);
+        printf_s("Element %d is present at index: %d\n", x, index);
     }
 
     return 0;
