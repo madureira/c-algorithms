@@ -32,6 +32,7 @@
 
 ---
 
-| Data Structure                           |
-| ---------------------------------------- |
-| [ArrayList](/data_structures/ArrayList/) |
+| Data Structure                             |
+| ------------------------------------------ |
+| [ArrayList](/data_structures/ArrayList/)   |
+| [LinkedList](/data_structures/LinkedList/) |
