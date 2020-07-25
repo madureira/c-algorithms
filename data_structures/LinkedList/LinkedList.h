@@ -7,11 +7,14 @@ extern "C" {
 
     typedef void* NodeValue;
 
-    typedef struct _Node
+    typedef struct Node
     {
         NodeValue value;
         struct Node* next;
     } Node;
+
+    typedef void (*LinkedListCallback)(Node* node);
+    typedef int (*LinkedListCompareFunction)(NodeValue* a, NodeValue* b);
 
     /*
         Create a new Node.
@@ -27,6 +30,36 @@ extern "C" {
         Add a new Node at the end of the LinkedList.
     */
     Node* linkedlist_append(Node* head, NodeValue value);
+
+    /*
+        Reverse a LinkedList.
+    */
+    Node* linkedlist_reverse(Node* head);
+
+    /*
+        Traverse the LinkedList and perform the callback function for each Node.
+    */
+    void linkedlist_traverse(Node* head, LinkedListCallback callback);
+
+    /*
+        Remove the first Node from a LinkedList.
+    */
+    Node* linkedlist_remove_first(Node* head);
+
+    /*
+        Remove the last Node from a LinkedList.
+    */
+    Node* linkedlist_remove_last(Node* head);
+
+    /*
+        Search for a specific Node with value.
+    */
+    Node* linkedlist_search(Node* head, NodeValue value);
+
+    /*
+        Sort the Nodes from a LinkedList.
+    */
+    Node* linkedlist_sort(Node* head, LinkedListCompareFunction compareFunction);
 
     /*
         Delete an existent Node.
