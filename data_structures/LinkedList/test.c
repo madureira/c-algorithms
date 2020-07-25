@@ -45,11 +45,10 @@ void test_linkedlist_prepend()
     node = linkedlist_prepend(node, 2);
     node = linkedlist_prepend(node, 1);
 
-    Node* node1 = node;
-    Node* node2 = node1->next;
+    Node* node2 = node->next;
     Node* node3 = node2->next;
 
-    ASSERT_INT_EQUALS(node1->value, 1);
+    ASSERT_INT_EQUALS(node->value, 1);
     ASSERT_INT_EQUALS(node2->value, 2);
     ASSERT_INT_EQUALS(node3->value, 3);
 
@@ -65,11 +64,10 @@ void test_linkedlist_append()
     linkedlist_append(node, 2);
     linkedlist_append(node, 3);
 
-    Node* node1 = node;
-    Node* node2 = node1->next;
+    Node* node2 = node->next;
     Node* node3 = node2->next;
 
-    ASSERT_INT_EQUALS(node1->value, 1);
+    ASSERT_INT_EQUALS(node->value, 1);
     ASSERT_INT_EQUALS(node2->value, 2);
     ASSERT_INT_EQUALS(node3->value, 3);
 
@@ -87,11 +85,10 @@ void test_linkedlist_reverse()
 
     node = linkedlist_reverse(node);
 
-    Node* node1 = node;
-    Node* node2 = node1->next;
+    Node* node2 = node->next;
     Node* node3 = node2->next;
 
-    ASSERT_INT_EQUALS(node1->value, 3);
+    ASSERT_INT_EQUALS(node->value, 3);
     ASSERT_INT_EQUALS(node2->value, 2);
     ASSERT_INT_EQUALS(node3->value, 1);
 
@@ -128,10 +125,9 @@ Node* test_linkedlist_remove_first()
 
     node = linkedlist_remove_first(node);
 
-    Node* node1 = node;
-    Node* node2 = node1->next;
+    Node* node2 = node->next;
 
-    ASSERT_INT_EQUALS(node1->value, 2);
+    ASSERT_INT_EQUALS(node->value, 2);
     ASSERT_INT_EQUALS(node2->value, 3);
     ASSERT_NULL(node2->next);
 
@@ -149,10 +145,9 @@ void test_linkedlist_remove_last()
 
     node = linkedlist_remove_last(node);
 
-    Node* node1 = node;
-    Node* node2 = node1->next;
+    Node* node2 = node->next;
 
-    ASSERT_INT_EQUALS(node1->value, 1);
+    ASSERT_INT_EQUALS(node->value, 1);
     ASSERT_INT_EQUALS(node2->value, 2);
     ASSERT_NULL(node2->next);
 
@@ -185,34 +180,46 @@ void test_linkedlist_sort()
 
     linkedlist_append(node, 2);
     linkedlist_append(node, 1);
+    linkedlist_append(node, 2);
 
     node = linkedlist_sort(node, int_compare_function);
 
-    Node* node1 = node;
-    Node* node2 = node1->next;
+    Node* node2 = node->next;
     Node* node3 = node2->next;
+    Node* node4 = node3->next;
 
-    ASSERT_INT_EQUALS(node1->value, 1);
+    ASSERT_INT_EQUALS(node->value, 1);
     ASSERT_INT_EQUALS(node2->value, 2);
-    ASSERT_INT_EQUALS(node3->value, 3);
+    ASSERT_INT_EQUALS(node3->value, 2);
+    ASSERT_INT_EQUALS(node4->value, 3);
+
+    linkedlist_free(node);
+
+    TEST_DONE;
 }
 
 void test_linkedlist_sort_strings()
 {
-    Node* node = linkedlist_create_node("C");
+    Node* node = linkedlist_create_node("A");
 
     linkedlist_append(node, "B");
     linkedlist_append(node, "A");
+    linkedlist_append(node, "C");
 
     node = linkedlist_sort(node, c_string_compare_function);
 
-    Node* node1 = node;
-    Node* node2 = node1->next;
+    Node* node2 = node->next;
     Node* node3 = node2->next;
+    Node* node4 = node3->next;
 
-    ASSERT_STRING_EQUALS(node1->value, "A");
-    ASSERT_STRING_EQUALS(node2->value, "B");
-    ASSERT_STRING_EQUALS(node3->value, "C");
+    ASSERT_STRING_EQUALS(node->value, "A");
+    ASSERT_STRING_EQUALS(node2->value, "A");
+    ASSERT_STRING_EQUALS(node3->value, "B");
+    ASSERT_STRING_EQUALS(node4->value, "C");
+
+    linkedlist_free(node);
+
+    TEST_DONE;
 }
 
 int main()

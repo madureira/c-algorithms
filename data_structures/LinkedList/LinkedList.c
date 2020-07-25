@@ -166,9 +166,9 @@ Node* __sortedInsert(Node* sorted, Node* newNode, LinkedListCompareFunction comp
         while (current->next != NULL && compareFunction(current->next->value, newNode->value) <= 0)
         {
             current = current->next;
-            newNode->next = current->next;
-            current->next = newNode;
         }
+        newNode->next = current->next;
+        current->next = newNode;
     }
 
     return sorted;
