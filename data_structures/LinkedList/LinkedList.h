@@ -14,12 +14,17 @@ extern "C" {
     } Node;
 
     /*
-        Create new Node.
+        Create a new Node.
     */
     Node* linkedlist_create_node(NodeValue value);
-    
+
     /*
-        Append a value to a Node.
+        Add a new Node at the beginning of the LinkedList.
+    */
+    Node* linkedlist_prepend(Node* head, NodeValue value);
+
+    /*
+        Add a new Node at the end of the LinkedList.
     */
     Node* linkedlist_append(Node* head, NodeValue value);
 

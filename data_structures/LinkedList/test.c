@@ -18,6 +18,26 @@ void test_linkedlist_create_node()
     TEST_DONE;
 }
 
+void test_linkedlist_prepend()
+{
+    Node* node3 = linkedlist_create_node(3);
+
+    Node* node2 = linkedlist_prepend(node3, 2);
+    Node* node = linkedlist_prepend(node2, 1);
+
+    int i = 1;
+    while (node != NULL)
+    {
+        ASSERT_INT_EQUALS(node->value, i);
+        node = node->next;
+        i++;
+    }
+
+    linkedlist_free(node);
+
+    TEST_DONE;
+}
+
 void test_linkedlist_append()
 {
     Node* node = linkedlist_create_node(1);
@@ -43,6 +63,7 @@ int main()
     printf_s("LinkedList tests\n\n");
 
     test_linkedlist_create_node();
+    test_linkedlist_prepend();
     test_linkedlist_append();
 
     return 0;

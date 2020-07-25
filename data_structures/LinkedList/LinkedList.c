@@ -10,6 +10,16 @@ Node* linkedlist_create_node(NodeValue value)
     return node;
 }
 
+Node* linkedlist_prepend(Node* head, NodeValue value)
+{
+    Node* newNode = linkedlist_create_node(value);
+    if (head != NULL)
+    {
+        newNode->next = head;
+    }
+    return newNode;
+}
+
 Node* linkedlist_append(Node* head, NodeValue value)
 {
     Node* previous;
@@ -42,4 +52,5 @@ void linkedlist_free(Node* node)
         temp->value = NULL;
         free(temp);
     }
+    temp = NULL;
 }
