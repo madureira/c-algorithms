@@ -11,7 +11,7 @@ extern "C" {
 
     typedef void* ArrayListValue;
 
-    typedef struct _ArrayList
+    typedef struct ArrayList
     {
         ArrayListValue* __elements;
         unsigned int __length;

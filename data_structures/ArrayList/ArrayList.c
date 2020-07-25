@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 static int __arraylist_increase_capacity(ArrayList* arrayList);
-static void __arraylist_quicksort(ArrayListValue* elements, int left, int right);
+static void __arraylist_quicksort(ArrayListValue* elements, int left, int right, ArrayListCompareFunction compareFunction);
 
 ArrayList* new_arraylist()
 {
