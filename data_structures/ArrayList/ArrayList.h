@@ -94,4 +94,4 @@ extern "C" {
 }
 #endif
 
-#endif // #ifndef ARRAY_LIST_H
+#endif // ARRAY_LIST_H

@@ -70,4 +70,4 @@ extern "C" {
 }
 #endif
 
-#endif // #ifndef LINKED_LIST_H
+#endif // LINKED_LIST_H
