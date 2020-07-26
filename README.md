@@ -24,11 +24,12 @@
 
 ---
 
-| Sorting                                  | Worst complexity | Average complexity | Best complexity | Space complexity |
-| ---------------------------------------- | ---------------- | ------------------ | ----------------| ---------------- |
-| [bubble sort](/sorting/bubble_sort.c)    | O(n^2)           | O(n^2)             | O(n)            | O(1)             |
-| [quick sort](/sorting/quick_sort.c)      | O(n^2)           | O(n log n)         | O(n log n)      | O(log n)         |
-| [merge sort](/sorting/merge_sort.c)      | O(n log n)       | O(n log n)         | O(n log n)      | O(n)             |
+| Sorting                                     | Worst complexity | Average complexity | Best complexity | Space complexity |
+| ------------------------------------------- | ---------------- | ------------------ | ----------------| ---------------- |
+| [bubble sort](/sorting/bubble_sort.c)       | O(n^2)           | O(n^2)             | O(n)            | O(1)             |
+| [quick sort](/sorting/quick_sort.c)         | O(n^2)           | O(n log n)         | O(n log n)      | O(log n)         |
+| [merge sort](/sorting/merge_sort.c)         | O(n log n)       | O(n log n)         | O(n log n)      | O(n)             |
+| [insertion sort](/sorting/insertion_sort.c) | О(n^2)           | О(n^2)             | O(n)            | O(n)             |
 
 ---
 
