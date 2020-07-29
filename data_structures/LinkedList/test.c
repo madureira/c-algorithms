@@ -6,7 +6,7 @@
 #define ASSERT_NULL(a) assert((a) == NULL)
 #define ASSERT_INT_EQUALS(a, b) assert((a) == (b))
 #define ASSERT_STRING_EQUALS(a, b) strcmp((a), (b))
-#define TEST_DONE printf_s("Test: \"%s\" - success\n", __func__)
+#define TEST_DONE printf_s("Test: \"%s\" - success\n", __func__);
 
 static int GLOBAL_TRAVERSE_COUNTER = 0;
 
@@ -35,7 +35,7 @@ void test_linkedlist_create_node()
 
     linkedlist_free(node);
 
-    TEST_DONE;
+    TEST_DONE
 }
 
 void test_linkedlist_prepend()
@@ -54,7 +54,7 @@ void test_linkedlist_prepend()
 
     linkedlist_free(node);
 
-    TEST_DONE;
+    TEST_DONE
 }
 
 void test_linkedlist_append()
@@ -73,7 +73,7 @@ void test_linkedlist_append()
 
     linkedlist_free(node);
 
-    TEST_DONE;
+    TEST_DONE
 }
 
 void test_linkedlist_reverse()
@@ -94,7 +94,7 @@ void test_linkedlist_reverse()
 
     linkedlist_free(node);
 
-    TEST_DONE;
+    TEST_DONE
 }
 
 void test_linkedlist_traverse()
@@ -113,7 +113,7 @@ void test_linkedlist_traverse()
 
     linkedlist_free(node);
 
-    TEST_DONE;
+    TEST_DONE
 }
 
 Node* test_linkedlist_remove_first()
@@ -133,7 +133,7 @@ Node* test_linkedlist_remove_first()
 
     linkedlist_free(node);
 
-    TEST_DONE;
+    TEST_DONE
 }
 
 void test_linkedlist_remove_last()
@@ -153,7 +153,7 @@ void test_linkedlist_remove_last()
 
     linkedlist_free(node);
 
-    TEST_DONE;
+    TEST_DONE
 }
 
 void test_linkedlist_search()
@@ -171,7 +171,7 @@ void test_linkedlist_search()
 
     linkedlist_free(node);
 
-    TEST_DONE;
+    TEST_DONE
 }
 
 void test_linkedlist_sort()
@@ -195,7 +195,7 @@ void test_linkedlist_sort()
 
     linkedlist_free(node);
 
-    TEST_DONE;
+    TEST_DONE
 }
 
 void test_linkedlist_sort_strings()
@@ -219,7 +219,7 @@ void test_linkedlist_sort_strings()
 
     linkedlist_free(node);
 
-    TEST_DONE;
+    TEST_DONE
 }
 
 int main()

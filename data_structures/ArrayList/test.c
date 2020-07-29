@@ -5,7 +5,7 @@
 
 #define ASSERT_INT_EQUALS(a, b) assert((a) == (b))
 #define ASSERT_STRING_EQUALS(a, b) strcmp((a), (b))
-#define TEST_DONE printf_s("Test: \"%s\" - success\n", __func__)
+#define TEST_DONE printf_s("Test: \"%s\" - success\n", __func__);
 
 static int int_compare_function(int a, int b)
 {
@@ -28,7 +28,7 @@ void test_new_arraylist()
 
     free_arraylist(arrayList);
 
-    TEST_DONE;
+    TEST_DONE
 }
 
 void test_arraylist_insert()
@@ -45,7 +45,7 @@ void test_arraylist_insert()
 
     free_arraylist(arrayList);
 
-    TEST_DONE;
+    TEST_DONE
 }
 
 void test_arraylist_prepend()
@@ -60,7 +60,7 @@ void test_arraylist_prepend()
 
     free_arraylist(arrayList);
 
-    TEST_DONE;
+    TEST_DONE
 }
 
 void test_arraylist_append()
@@ -75,7 +75,7 @@ void test_arraylist_append()
 
     free_arraylist(arrayList);
 
-    TEST_DONE;
+    TEST_DONE
 }
 
 void test_arraylist_size()
@@ -89,7 +89,7 @@ void test_arraylist_size()
 
     free_arraylist(arrayList);
 
-    TEST_DONE;
+    TEST_DONE
 }
 
 void test_arraylist_at()
@@ -104,7 +104,7 @@ void test_arraylist_at()
 
     free_arraylist(arrayList);
 
-    TEST_DONE;
+    TEST_DONE
 }
 
 void test_arraylist_indexof()
@@ -123,7 +123,7 @@ void test_arraylist_indexof()
 
     free_arraylist(arrayList);
 
-    TEST_DONE;
+    TEST_DONE
 }
 
 void test_arraylist_remove_range()
@@ -143,7 +143,7 @@ void test_arraylist_remove_range()
 
     free_arraylist(arrayList);
 
-    TEST_DONE;
+    TEST_DONE
 }
 
 void test_arraylist_remove()
@@ -162,7 +162,7 @@ void test_arraylist_remove()
 
     free_arraylist(arrayList);
 
-    TEST_DONE;
+    TEST_DONE
 }
 
 void test_arraylist_sort()
@@ -185,7 +185,7 @@ void test_arraylist_sort()
 
     free_arraylist(arrayList);
 
-    TEST_DONE;
+    TEST_DONE
 }
 
 void test_arraylist_sort_strings()
@@ -204,7 +204,7 @@ void test_arraylist_sort_strings()
 
     free_arraylist(arrayList);
 
-    TEST_DONE;
+    TEST_DONE
 }
 
 void test_arraylist_reverse()
@@ -227,7 +227,7 @@ void test_arraylist_reverse()
 
     free_arraylist(arrayList);
 
-    TEST_DONE;
+    TEST_DONE
 }
 
 void test_arraylist_reverse_c_strings()
@@ -246,7 +246,7 @@ void test_arraylist_reverse_c_strings()
 
     free_arraylist(arrayList);
 
-    TEST_DONE;
+    TEST_DONE
 }
 
 void test_arraylist_erase()
@@ -266,7 +266,7 @@ void test_arraylist_erase()
 
     free_arraylist(arrayList);
 
-    TEST_DONE;
+    TEST_DONE
 }
 
 void test_arraylist_capacity()
@@ -284,7 +284,7 @@ void test_arraylist_capacity()
 
     free_arraylist(arrayList);
 
-    TEST_DONE;
+    TEST_DONE
 }
 
 int main()
