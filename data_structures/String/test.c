@@ -49,16 +49,16 @@ void test_string_is_equal()
     TEST_DONE
 }
 
-void test_string_c_is_equal()
+void test_string_is_equal_c()
 {
     String* first = new_string("AAA");
     char* second = "AAA";
 
-    ASSERT_INT_EQUALS(string_c_is_equal(first, second), 1);
+    ASSERT_INT_EQUALS(string_is_equal_c(first, second), 1);
 
     second = "AAB";
 
-    ASSERT_INT_EQUALS(string_c_is_equal(first, second), 0);
+    ASSERT_INT_EQUALS(string_is_equal_c(first, second), 0);
 
     free_string(first);
 
@@ -80,13 +80,137 @@ void test_string_concat()
     TEST_DONE
 }
 
+void test_string_concat_c()
+{
+    String* first = new_string("AAA");
+    char* second = "BBB";
+
+    first = string_concat_c(first, second);
+
+    ASSERT_STRING_EQUALS(first->value, "AAABBB");
+
+    free_string(first);
+
+    TEST_DONE
+}
+
+void test_string_indexof()
+{
+    String* first = new_string("AAABBBCCC");
+    String* second = new_string("BBB");
+    String* third = new_string("AAABZ");
+
+    ASSERT_INT_EQUALS(string_indexof(first, second), 3);
+    ASSERT_INT_EQUALS(string_indexof(first, third), -1);
+
+    free_string(first);
+    free_string(second);
+    free_string(third);
+
+    TEST_DONE
+}
+
+void test_string_indexof_c()
+{
+    String* first = new_string("AAABBBCCC");
+    char* second = "BBB";
+    char* third = "AAABZ";
+
+    ASSERT_INT_EQUALS(string_indexof_c(first, second), 3);
+    ASSERT_INT_EQUALS(string_indexof_c(first, third), -1);
+
+    free_string(first);
+
+    TEST_DONE
+}
+
+void test_string_contains()
+{
+    String* first = new_string("AAABBBCCC");
+    String* second = new_string("BBB");
+    String* third = new_string("AAABZ");
+
+    ASSERT_INT_EQUALS(string_contains(first, second), 1);
+    ASSERT_INT_EQUALS(string_contains(first, third), 0);
+
+    free_string(first);
+    free_string(second);
+    free_string(third);
+
+    TEST_DONE
+}
+
+void test_string_contains_c()
+{
+    String* first = new_string("AAABBBCCC");
+    char* second = "BBB";
+    char* third = "AAABZ";
+
+    ASSERT_INT_EQUALS(string_contains_c(first, second), 1);
+    ASSERT_INT_EQUALS(string_contains_c(first, third), 0);
+
+    free_string(first);
+
+    TEST_DONE
+}
+
+void test_string_is_empty()
+{
+    String* first = new_string("");
+    String* second = new_string("AAA");
+
+    ASSERT_INT_EQUALS(string_is_empty(first), 1);
+    ASSERT_INT_EQUALS(string_is_empty(second), 0);
+
+    free_string(first);
+    free_string(second);
+
+    TEST_DONE
+}
+
+void test_string_clear()
+{
+    String* str = new_string("AAA");
+
+    str = string_clear(str);
+
+    ASSERT_INT_EQUALS(string_is_empty(str), 1);
+
+    free_string(str);
+
+    TEST_DONE
+}
+
+void test_string_set()
+{
+    String* first = new_string("AAA");
+    String* second = new_string("BBB");
+
+    first = string_set(first, second);
+
+    ASSERT_STRING_EQUALS(first->value, "BBB");
+
+    free_string(first);
+    free_string(second);
+
+    TEST_DONE
+}
+
 int main()
 {
     test_new_string();
     test_string_length();
     test_string_is_equal();
-    test_string_c_is_equal();
+    test_string_is_equal_c();
     test_string_concat();
+    test_string_concat_c();
+    test_string_indexof();
+    test_string_indexof_c();
+    test_string_contains();
+    test_string_contains_c();
+    test_string_is_empty();
+    test_string_clear();
+    test_string_set();
 
     return 0;
 }
