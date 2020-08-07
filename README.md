@@ -39,3 +39,4 @@
 | [HashTable](/data_structures/HashTable/)   |
 | [LinkedList](/data_structures/LinkedList/) |
 | [String](/data_structures/String/)         |
+| [Stack](/data_structures/Stack/)           |
