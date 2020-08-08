@@ -4,7 +4,7 @@
 #include "ArrayList.h"
 
 #define ASSERT_INT_EQUALS(a, b) assert((a) == (b))
-#define ASSERT_STRING_EQUALS(a, b) assert(strcmp((a), (b)))
+#define ASSERT_STRING_EQUALS(a, b) assert(strcmp(((const char*)(a)), ((const char*)(b))) == 0)
 #define TEST_DONE printf_s("Test: \"%s\" - success\n", __func__);
 
 static int int_compare_function(int a, int b)

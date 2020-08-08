@@ -8,6 +8,10 @@ Node* linkedlist_create_node(NodeValue value)
 {
     Node* node;
     node = (Node*)malloc(sizeof(Node));
+    if (node == NULL)
+    {
+        return NULL;
+    }
     node->next = NULL;
     node->value = value;
 

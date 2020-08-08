@@ -277,7 +277,7 @@ String* string_clear(String* str)
     return str;
 }
 
-String string_set(String* first, String* second)
+String* string_set(String* first, String* second)
 {
-
+    return NULL;
 }
