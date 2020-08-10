@@ -38,5 +38,6 @@
 | [ArrayList](/data_structures/ArrayList/)   |
 | [HashTable](/data_structures/HashTable/)   |
 | [LinkedList](/data_structures/LinkedList/) |
-| [String](/data_structures/String/)         |
+| [Queue](/data_structures/Queue/)           |
 | [Stack](/data_structures/Stack/)           |
+| [String](/data_structures/String/)         |
