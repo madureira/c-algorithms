@@ -77,7 +77,7 @@ void stack_push(Stack* stack, StackItem item)
 
 StackItem stack_peek(Stack* stack)
 {
-    if (stack == NULL || stack_is_empty(stack) == 1)
+    if (stack_is_empty(stack) == 1)
     {
         return NULL;
     }
@@ -87,7 +87,7 @@ StackItem stack_peek(Stack* stack)
 
 StackItem stack_pop(Stack* stack)
 {
-    if (stack == NULL || stack_is_empty(stack) == 1)
+    if (stack_is_empty(stack) == 1)
     {
         return NULL;
     }
