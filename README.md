@@ -41,3 +41,4 @@
 | [Queue](/data_structures/Queue/)           |
 | [Stack](/data_structures/Stack/)           |
 | [String](/data_structures/String/)         |
+| [Tree](/data_structures/Tree/)             |
