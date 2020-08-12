@@ -36,9 +36,9 @@
 | Data Structure                             |
 | ------------------------------------------ |
 | [ArrayList](/data_structures/ArrayList/)   |
+| [BinaryTree](/data_structures/BinaryTree/) |
 | [HashTable](/data_structures/HashTable/)   |
 | [LinkedList](/data_structures/LinkedList/) |
 | [Queue](/data_structures/Queue/)           |
 | [Stack](/data_structures/Stack/)           |
 | [String](/data_structures/String/)         |
-| [Tree](/data_structures/Tree/)             |
