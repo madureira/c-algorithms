@@ -53,3 +53,39 @@ BinaryTreeNode* binarytree_insert_right(BinaryTreeNode* rootNode, BinaryTreeNode
     
     return rootNode->right;
 }
+
+void binarytree_inorder_traversal(BinaryTreeNode* rootNode, BinaryTreeCallback callback)
+{
+    if (rootNode == NULL)
+    {
+        return;
+    }
+
+    binarytree_inorder_traversal(rootNode->left, callback);
+    callback(rootNode);
+    binarytree_inorder_traversal(rootNode->right, callback);
+}
+
+void binarytree_preorder_traversal(BinaryTreeNode* rootNode, BinaryTreeCallback callback)
+{
+    if (rootNode == NULL)
+    {
+        return;
+    }
+
+    callback(rootNode);
+    binarytree_preorder_traversal(rootNode->left, callback);
+    binarytree_preorder_traversal(rootNode->right, callback);
+}
+
+void binarytree_postorder_traversal(BinaryTreeNode* rootNode, BinaryTreeCallback callback)
+{
+    if (rootNode == NULL)
+    {
+        return;
+    }
+
+    binarytree_postorder_traversal(rootNode->left, callback);
+    binarytree_postorder_traversal(rootNode->right, callback);
+    callback(rootNode);
+}

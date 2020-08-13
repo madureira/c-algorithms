@@ -14,6 +14,8 @@ extern "C" {
         struct BinaryTreeNode* right;
     } BinaryTreeNode;
 
+    typedef void (*BinaryTreeCallback)(BinaryTreeNode* node);
+
     /*
         Creates a new empty BinaryTree.
     */
@@ -33,6 +35,21 @@ extern "C" {
         Inserts a value on the right side of the BinaryTreeNode.
     */
     BinaryTreeNode* binarytree_insert_right(BinaryTreeNode* rootNode, BinaryTreeNodeValue value);
+
+    /*
+        Visit the left branch, then the current node, and finally, the right branch.
+    */
+    void binarytree_inorder_traversal(BinaryTreeNode* rootNode, BinaryTreeCallback callback);
+
+    /*
+        Visit the current node before its child nodes in ascending order.
+    */
+    void binarytree_preorder_traversal(BinaryTreeNode* rootNode, BinaryTreeCallback callback);
+
+    /*
+        Visit the current node after its child nodes.
+    */
+    void binarytree_postorder_traversal(BinaryTreeNode* rootNode, BinaryTreeCallback callback);
 
 #ifdef __cplusplus
 }
