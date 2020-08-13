@@ -38,7 +38,7 @@ extern "C" {
     BinaryTreeNode* binarytree_insert_right(BinaryTreeNode* rootNode, BinaryTreeNodeValue value);
 
     /*
-        Recursive insert a value into.
+        Inserts a value recursively into the BinaryTree.
     */
     BinaryTreeNode* binarytree_insert(BinaryTreeNode* rootNode, BinaryTreeNodeValue value, BinaryTreeCompareFunction compareFunction);
 
