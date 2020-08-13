@@ -54,6 +54,25 @@ BinaryTreeNode* binarytree_insert_right(BinaryTreeNode* rootNode, BinaryTreeNode
     return rootNode->right;
 }
 
+BinaryTreeNode* binarytree_insert(BinaryTreeNode* rootNode, BinaryTreeNodeValue value, BinaryTreeCompareFunction compareFunction)
+{
+    if (rootNode == NULL)
+    {
+        return binarytree_create_node(value);
+    }
+
+    if (compareFunction(rootNode->value, value) >= 0)
+    {
+        rootNode->left = binarytree_insert(rootNode->left, value, compareFunction);
+    }
+    else
+    {
+        rootNode->right = binarytree_insert(rootNode->right, value, compareFunction);
+    }
+
+    return rootNode;
+}
+
 void binarytree_inorder_traversal(BinaryTreeNode* rootNode, BinaryTreeCallback callback)
 {
     if (rootNode == NULL)

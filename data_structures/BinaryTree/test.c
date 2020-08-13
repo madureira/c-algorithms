@@ -26,6 +26,18 @@ static void traverse_callback(BinaryTreeNode* node)
     GLOBAL_TRAVERSE_INDEX++;
 }
 
+static int int_compare_function(int a, int b)
+{
+    if (a > b) return 1;
+    if (a < b) return -1;
+    return 0;
+}
+
+static int c_string_compare_function(char* a, char* b)
+{
+    return strcmp(a, b);
+}
+
 void test_binarytree_create_node()
 {
     BinaryTreeNode* node = binarytree_create_node(1);
@@ -61,6 +73,77 @@ void test_binarytree_insert_right()
 
     ASSERT_INT_EQUALS(node->right->value, 2);
     ASSERT_NULL(node->left);
+
+    binarytree_free(node);
+
+    TEST_DONE
+}
+
+void test_binarytree_insert()
+{
+    BinaryTreeNode* node = binarytree_create_node(5);
+
+    binarytree_insert(node, 3, int_compare_function);
+    binarytree_insert(node, 9, int_compare_function);
+
+    ASSERT_INT_EQUALS(node->left->value, 3);
+    ASSERT_INT_EQUALS(node->right->value, 9);
+
+    binarytree_free(node);
+
+    TEST_DONE
+}
+
+void test_binarytree_insert_string()
+{
+    BinaryTreeNode* node = binarytree_create_node("B");
+
+    binarytree_insert(node, "C", c_string_compare_function);
+    binarytree_insert(node, "A", c_string_compare_function);
+
+    ASSERT_INT_EQUALS(node->left->value, "A");
+    ASSERT_INT_EQUALS(node->right->value, "C");
+
+    binarytree_free(node);
+
+    TEST_DONE
+}
+
+void test_binarytree_insert_recursively()
+{
+    /*
+                    10
+           _________|_________
+          |                   |
+       ___5___             ___20___
+      |       |           |        |
+      3       7___        15    ___30
+                  |            |
+                  9            25
+    */
+
+    BinaryTreeNode* node = binarytree_create_node(10);
+
+    binarytree_insert(node, 5, int_compare_function);
+    binarytree_insert(node, 20, int_compare_function);
+    binarytree_insert(node, 3, int_compare_function);
+    binarytree_insert(node, 7, int_compare_function);
+    binarytree_insert(node, 9, int_compare_function);
+    binarytree_insert(node, 15, int_compare_function);
+    binarytree_insert(node, 30, int_compare_function);
+    binarytree_insert(node, 25, int_compare_function);
+
+    ASSERT_INT_EQUALS(node->value, 10);
+
+    ASSERT_INT_EQUALS(node->left->value, 5);
+    ASSERT_INT_EQUALS(node->left->left->value, 3);
+    ASSERT_INT_EQUALS(node->left->right->value, 7);
+    ASSERT_INT_EQUALS(node->left->right->right->value, 9);
+
+    ASSERT_INT_EQUALS(node->right->value, 20);
+    ASSERT_INT_EQUALS(node->right->left->value, 15);
+    ASSERT_INT_EQUALS(node->right->right->value, 30);
+    ASSERT_INT_EQUALS(node->right->right->left->value, 25);
 
     binarytree_free(node);
 
@@ -161,6 +244,9 @@ int main()
     test_binarytree_create_node();
     test_binarytree_insert_left();
     test_binarytree_insert_right();
+    test_binarytree_insert();
+    test_binarytree_insert_string();
+    test_binarytree_insert_recursively();
     test_binarytree_inorder_traversal();
     test_binarytree_preorder_traversal();
     test_binarytree_postorder_traversal();

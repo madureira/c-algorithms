@@ -15,6 +15,7 @@ extern "C" {
     } BinaryTreeNode;
 
     typedef void (*BinaryTreeCallback)(BinaryTreeNode* node);
+    typedef int (*BinaryTreeCompareFunction)(BinaryTreeNodeValue* a, BinaryTreeNodeValue* b);
 
     /*
         Creates a new empty BinaryTree.
@@ -35,6 +36,11 @@ extern "C" {
         Inserts a value on the right side of the BinaryTreeNode.
     */
     BinaryTreeNode* binarytree_insert_right(BinaryTreeNode* rootNode, BinaryTreeNodeValue value);
+
+    /*
+        Recursive insert a value into.
+    */
+    BinaryTreeNode* binarytree_insert(BinaryTreeNode* rootNode, BinaryTreeNodeValue value, BinaryTreeCompareFunction compareFunction);
 
     /*
         Visit the left branch, then the current node, and finally, the right branch.
