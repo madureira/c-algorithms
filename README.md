@@ -37,6 +37,7 @@
 | ------------------------------------------ |
 | [ArrayList](/data_structures/ArrayList/)   |
 | [BinaryTree](/data_structures/BinaryTree/) |
+| [Graph](/data_structures/Graph/)           |
 | [HashTable](/data_structures/HashTable/)   |
 | [LinkedList](/data_structures/LinkedList/) |
 | [Queue](/data_structures/Queue/)           |
