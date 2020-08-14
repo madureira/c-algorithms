@@ -153,7 +153,7 @@ void test_binarytree_insert_recursively()
 void test_binarytree_inorder_traversal()
 {
     BinaryTreeNode* node = binarytree_create_node(1);
-    
+
     BinaryTreeNode* node2 = binarytree_insert_left(node, 2);
     binarytree_insert_left(node2, 4);
     binarytree_insert_right(node2, 5);

@@ -39,7 +39,7 @@ BinaryTreeNode* binarytree_insert_left(BinaryTreeNode* rootNode, BinaryTreeNodeV
         return NULL;
     }
     rootNode->left = binarytree_create_node(value);
-    
+
     return rootNode->left;
 }
 
@@ -50,7 +50,7 @@ BinaryTreeNode* binarytree_insert_right(BinaryTreeNode* rootNode, BinaryTreeNode
         return NULL;
     }
     rootNode->right = binarytree_create_node(value);
-    
+
     return rootNode->right;
 }
 
