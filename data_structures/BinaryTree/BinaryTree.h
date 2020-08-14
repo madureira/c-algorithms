@@ -57,6 +57,11 @@ extern "C" {
     */
     void binarytree_postorder_traversal(BinaryTreeNode* rootNode, BinaryTreeCallback callback);
 
+    /*
+        Recursively searches for a value in a given BinaryTreeNode and returns the node if found. Otherwise, returns null.
+    */
+    BinaryTreeNode* binarytree_search(BinaryTreeNode* rootNode, BinaryTreeNodeValue value, BinaryTreeCompareFunction compareFunction);
+
 #ifdef __cplusplus
 }
 #endif

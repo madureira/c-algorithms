@@ -237,6 +237,80 @@ void test_binarytree_postorder_traversal()
     TEST_DONE
 }
 
+void test_binarytree_search()
+{
+    /*
+                    10
+           _________|_________
+          |                   |
+       ___5___             ___20___
+      |       |           |        |
+      3       7___        15    ___30
+                  |            |
+                  9            25
+    */
+
+    BinaryTreeNode* tree = binarytree_create_node(10);
+
+    binarytree_insert(tree, 5, int_compare_function);
+    binarytree_insert(tree, 20, int_compare_function);
+    binarytree_insert(tree, 3, int_compare_function);
+    binarytree_insert(tree, 7, int_compare_function);
+    binarytree_insert(tree, 9, int_compare_function);
+    binarytree_insert(tree, 15, int_compare_function);
+    binarytree_insert(tree, 30, int_compare_function);
+    binarytree_insert(tree, 25, int_compare_function);
+
+    BinaryTreeNode* foundNode = binarytree_search(tree, 30, int_compare_function);
+
+    ASSERT_INT_EQUALS(foundNode->left->value, 25);
+
+    BinaryTreeNode* notFoundNode = binarytree_search(tree, 999, int_compare_function);
+
+    ASSERT_NULL(notFoundNode);
+
+    binarytree_free(tree);
+
+    TEST_DONE
+}
+
+void test_binarytree_search_string()
+{
+    /*
+                    E
+           _________|_________
+          |                   |
+       ___B___             ___G___
+      |       |           |        |
+      A       C___        F     ___I
+                  |            |
+                  D            H
+    */
+
+    BinaryTreeNode* tree = binarytree_create_node("E");
+
+    binarytree_insert(tree, "B", c_string_compare_function);
+    binarytree_insert(tree, "G", c_string_compare_function);
+    binarytree_insert(tree, "A", c_string_compare_function);
+    binarytree_insert(tree, "C", c_string_compare_function);
+    binarytree_insert(tree, "D", c_string_compare_function);
+    binarytree_insert(tree, "F", c_string_compare_function);
+    binarytree_insert(tree, "I", c_string_compare_function);
+    binarytree_insert(tree, "H", c_string_compare_function);
+
+    BinaryTreeNode* foundNode = binarytree_search(tree, "I", c_string_compare_function);
+
+    ASSERT_INT_EQUALS(foundNode->left->value, "H");
+
+    BinaryTreeNode* notFoundNode = binarytree_search(tree, "Z", c_string_compare_function);
+
+    ASSERT_NULL(notFoundNode);
+
+    binarytree_free(tree);
+
+    TEST_DONE
+}
+
 int main()
 {
     printf_s("BinaryTree tests\n\n");
@@ -250,6 +324,8 @@ int main()
     test_binarytree_inorder_traversal();
     test_binarytree_preorder_traversal();
     test_binarytree_postorder_traversal();
+    test_binarytree_search();
+    test_binarytree_search_string();
 
     return 0;
 }

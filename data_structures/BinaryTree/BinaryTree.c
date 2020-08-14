@@ -108,3 +108,22 @@ void binarytree_postorder_traversal(BinaryTreeNode* rootNode, BinaryTreeCallback
     binarytree_postorder_traversal(rootNode->right, callback);
     callback(rootNode);
 }
+
+BinaryTreeNode* binarytree_search(BinaryTreeNode* rootNode, BinaryTreeNodeValue value, BinaryTreeCompareFunction compareFunction)
+{
+    if (rootNode == NULL)
+    {
+        return NULL;
+    }
+
+    if (compareFunction(rootNode->value, value) > 0)
+    {
+        return binarytree_search(rootNode->left, value, compareFunction);
+    }
+    else if (compareFunction(rootNode->value, value) < 0)
+    {
+        return binarytree_search(rootNode->right, value, compareFunction);
+    }
+
+    return rootNode;
+}
