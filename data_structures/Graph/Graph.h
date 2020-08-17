@@ -5,14 +5,38 @@
 extern "C" {
 #endif
 
-    typedef void* GraphNodeValue;
+#define GRAPH_INITIAL_CAPACITY 128
 
-    typedef struct  GraphNode
+    typedef void* GraphVertexValue;
+
+    typedef struct GraphVertex
     {
-        GraphNodeValue value;
-    } GraphNode;
+        char* name;
+        GraphVertexValue value;
+    } GraphVertex;
 
-    GraphNode* graph_create_node(GraphNodeValue value);
+    typedef struct GraphEdge
+    {
+        GraphVertex* from;
+        GraphVertex* to;
+    } GraphEdge;
+
+    typedef struct Graph
+    {
+        GraphVertex** vertices;
+        GraphEdge** edges;
+        unsigned int capacity;
+        unsigned int verticesIndex;
+        unsigned int edgesIndex;
+    } Graph;
+
+    Graph* new_graph();
+
+    void free_graph(Graph* graph);
+
+    GraphVertex* graph_add_vertex(Graph* graph, char* vertexName, GraphVertexValue vertexValue);
+
+    void graph_add_edge(Graph* graph, GraphVertex* from, GraphVertex* to);
 
 #ifdef __cplusplus
 }
