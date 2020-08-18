@@ -6,6 +6,8 @@ extern "C" {
 #endif
 
 #define GRAPH_INITIAL_CAPACITY 128
+#define GRAPH_INVALID_ARGUMENT (void*)0
+#define GRAPH_MEM_ALLOC_FAILURE (void*)0
 
     typedef void* GraphVertexValue;
 
@@ -21,22 +23,56 @@ extern "C" {
         GraphVertex* to;
     } GraphEdge;
 
+    typedef struct GraphEdgesList
+    {
+        GraphEdge** edges;
+        unsigned int size;
+        unsigned int capacity;
+    } GraphEdgesList;
+
     typedef struct Graph
     {
         GraphVertex** vertices;
         GraphEdge** edges;
-        unsigned int capacity;
         unsigned int verticesIndex;
         unsigned int edgesIndex;
+        unsigned int capacity;
     } Graph;
 
+    /*
+        Creates a new empty Graph.
+    */
     Graph* new_graph();
 
+    /*
+        Deletes all allocated memory for the Graph.
+    */
     void free_graph(Graph* graph);
 
-    GraphVertex* graph_add_vertex(Graph* graph, char* vertexName, GraphVertexValue vertexValue);
+    /*
+        Deletes all allocated memory for the GraphEdgesList.
+    */
+    void free_graph_edges_list(GraphEdgesList* edgesList);
 
+    /*
+        Adds a new vertex to the Graph.
+    */
+    GraphVertex* graph_add_vertex(Graph* graph, const char* vertexName, GraphVertexValue vertexValue);
+
+    /*
+        Creates a new relationship between two vertex.
+    */
     void graph_add_edge(Graph* graph, GraphVertex* from, GraphVertex* to);
+
+    /*
+        Gets an existing vertex by name.
+    */
+    GraphVertex* graph_get_vertex(Graph* graph, const char* vertexName);
+
+    /*
+        Gets a list of all edges that has a relationship with the vertex.
+    */
+    GraphEdgesList* graph_get_edges(Graph* graph, GraphVertex* vertex);
 
 #ifdef __cplusplus
 }
