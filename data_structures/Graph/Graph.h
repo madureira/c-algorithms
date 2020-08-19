@@ -34,8 +34,8 @@ extern "C" {
     {
         GraphVertex** vertices;
         GraphEdge** edges;
-        unsigned int verticesIndex;
-        unsigned int edgesIndex;
+        int verticesIndex;
+        int edgesIndex;
         unsigned int capacity;
     } Graph;
 
@@ -62,7 +62,7 @@ extern "C" {
     /*
         Creates a new relationship between two vertex.
     */
-    void graph_add_edge(Graph* graph, GraphVertex* from, GraphVertex* to);
+    void graph_add_edge(Graph* graph, GraphVertex* vertexFrom, GraphVertex* vertexTo);
 
     /*
         Gets an existing vertex by name.
@@ -73,6 +73,16 @@ extern "C" {
         Gets a list of all edges that has a relationship with the vertex.
     */
     GraphEdgesList* graph_get_edges(Graph* graph, GraphVertex* vertex);
+
+    /*
+        Remove the directed edge from "vertexFrom" to "vertexTo".
+    */
+    unsigned int graph_remove_edge(Graph* graph, GraphVertex* vertexFrom, GraphVertex* vertexTo);
+
+    /*
+        Removes a existent vertex and all edges associated with it.
+    */
+    unsigned int graph_remove_vertex(Graph* graph, GraphVertex* vertex);
 
 #ifdef __cplusplus
 }

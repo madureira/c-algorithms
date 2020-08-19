@@ -11,8 +11,8 @@ Graph* new_graph()
     }
 
     graph->capacity = GRAPH_INITIAL_CAPACITY;
-    graph->verticesIndex = 0;
-    graph->edgesIndex = 0;
+    graph->verticesIndex = -1;
+    graph->edgesIndex = -1;
 
     graph->vertices = calloc((size_t)graph->capacity, sizeof(GraphVertex*));
 
@@ -51,10 +51,7 @@ void free_graph(Graph* graph)
             {
                 free(vertex);
             }
-        }
 
-        for (int i = 0; i < graph->capacity; i++)
-        {
             GraphEdge* edge = graph->edges[i];
             if (edge != NULL)
             {
@@ -94,14 +91,14 @@ GraphVertex* graph_add_vertex(Graph* graph, const char* vertexName, GraphVertexV
     vertex->name = vertexName;
     vertex->value = vertexValue;
 
-    graph->vertices[graph->verticesIndex++] = vertex;
+    graph->vertices[++graph->verticesIndex] = vertex;
 
     return vertex;
 }
 
-void graph_add_edge(Graph* graph, GraphVertex* from, GraphVertex* to)
+void graph_add_edge(Graph* graph, GraphVertex* vertexFrom, GraphVertex* vertexTo)
 {
-    if (graph == NULL || from == NULL || to == NULL)
+    if (graph == NULL || vertexFrom == NULL || vertexTo == NULL)
     {
         return GRAPH_INVALID_ARGUMENT;
     }
@@ -113,10 +110,10 @@ void graph_add_edge(Graph* graph, GraphVertex* from, GraphVertex* to)
         return GRAPH_MEM_ALLOC_FAILURE;
     }
 
-    edge->from = from;
-    edge->to = to;
+    edge->from = vertexFrom;
+    edge->to = vertexTo;
 
-    graph->edges[graph->edgesIndex++] = edge;
+    graph->edges[++graph->edgesIndex] = edge;
 }
 
 GraphVertex* graph_get_vertex(Graph* graph, const char* vertexName)
@@ -126,7 +123,7 @@ GraphVertex* graph_get_vertex(Graph* graph, const char* vertexName)
         return GRAPH_INVALID_ARGUMENT;
     }
 
-    for (int i = 0; i < graph->verticesIndex; i++)
+    for (int i = 0; i <= graph->verticesIndex; i++)
     {
         GraphVertex* vertex = graph->vertices[i];
         if (vertex != NULL && vertex->name == vertexName)
@@ -162,7 +159,7 @@ GraphEdgesList* graph_get_edges(Graph* graph, GraphVertex* vertex)
         return GRAPH_MEM_ALLOC_FAILURE;
     }
 
-    for (int i = 0; i < graph->edgesIndex; i++)
+    for (int i = 0; i <= graph->edgesIndex; i++)
     {
         GraphEdge* edge = graph->edges[i];
         if (edge != NULL && (edge->from == vertex || edge->to == vertex))
@@ -172,4 +169,30 @@ GraphEdgesList* graph_get_edges(Graph* graph, GraphVertex* vertex)
     }
 
     return edgesList;
+}
+
+unsigned int graph_remove_edge(Graph* graph, GraphVertex* vertexFrom, GraphVertex* vertexTo)
+{
+    if (graph == NULL || vertexFrom == NULL || vertexTo == NULL || graph->edgesIndex == -1)
+    {
+        return 0;
+    }
+
+    for (int i = 0; i <= graph->edgesIndex; i++)
+    {
+        if (graph->edges[i] != NULL && graph->edges[i]->from == vertexFrom && graph->edges[i]->to == vertexTo)
+        {
+            memmove(&graph->edges[i], &graph->edges[i + 1], (graph->edgesIndex - i) * sizeof(graph->edges[0]));
+            graph->edges[graph->edgesIndex--] = NULL;
+
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
+unsigned int graph_remove_vertex(Graph* graph, GraphVertex* vertex)
+{
+    return 0;
 }
